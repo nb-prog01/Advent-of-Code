@@ -49,7 +49,6 @@ for i in range(len(data)):
             #conditon for top row inbetween cols inbetween data
             if((i==0) and st>0 and ed<((len(data[i]))-1)):
                 print("inside i==0")
-                numcheck=np.char.isdigit(data[i+1][st])
                 dotcheck=np.char.equal(data[i+1][st],dot)
                 dotcheck_side=np.char.equal(data[i][st-1],dot)
                 dotcheckcentredown=np.char.equal(data[i+1][st+1],dot)
@@ -58,10 +57,9 @@ for i in range(len(data)):
                 dotcheck_rightdown=np.char.equal(data[i+1][ed+1],dot)
                 dotcheckendside=np.char.equal(data[i][ed+1],dot)
 
-                numcheck1=np.char.isdigit(data[i+1][ed])
                 dotcheck1=np.char.equal(data[i+1][ed],dot)
 
-                if((numcheck==False and dotcheck==False) or dotcheckcentredown==False or dotcheck_side==False or dotcheck_leftdown==False or dotcheck_rightdown==False or dotcheckendside==False or dotcheck1==False):
+                if(dotcheck==False or dotcheckcentredown==False or dotcheck_side==False or dotcheck_leftdown==False or dotcheck_rightdown==False or dotcheckendside==False or dotcheck1==False):
                     print("found a special character"+str(numbers[j]))
                     output.append(int(numbers[j]))
                     # data[i]=data[i][:st]+('.'*len(numbers[j]))+data[i][(ed+1):]
@@ -75,9 +73,9 @@ for i in range(len(data)):
             #condition for in btwn rows cols
             elif(0<i and i<(len(data)-1) and st>0 and ed<(len(data[i])-1)):
                 print("inside 0<i<len(data)")
-                numcheck_prev=np.char.isdigit(data[i-1][st])
+                
                 dotcheck_prev=np.char.equal(data[i-1][st],dot)
-                numcheck_next=np.char.isdigit(data[i+1][st])
+                
                 dotcheck_next=np.char.equal(data[i+1][st],dot)
                 dotcheck_side=np.char.equal(data[i][st-1],dot)
                 dotcheck_leftup=np.char.equal(data[i-1][st-1],dot)
@@ -89,8 +87,8 @@ for i in range(len(data)):
                 dotcheckcentreup=np.char.equal(data[i-1][st+1],dot)
                 dotcheckcentredown=np.char.equal(data[i+1][st+1],dot)
                 dotcheckendside=np.char.equal(data[i][ed+1],dot)
-                if((numcheck_prev==False and dotcheck_prev==False) or
-                    (numcheck_next==False and dotcheck_next==False) or
+                if( dotcheck_prev==False or
+                     dotcheck_next==False or
                       dotcheck_side==False or dotcheck_leftup==False or
                         dotcheck_leftdown==False or
                           dotcheck_rightup==False or
@@ -111,7 +109,7 @@ for i in range(len(data)):
             #confition for bottom row inbetween columns
             elif(i==(len(data)-1) and st>0 and ed<(len(data[i])-1)):
                 print("inside i==len(data)")
-                numcheck_prev=np.char.isdigit(data[i-1][st])
+                
                 dotcheck_prev=np.char.equal(data[i-1][st],dot)
 
                 dotcheck_side=np.char.equal(data[i][st-1],dot)
@@ -124,7 +122,7 @@ for i in range(len(data)):
                 dotcheckcentreup=np.char.equal(data[i-1][st+1],dot)
                 dotcheckendside=np.char.equal(data[i][ed+1],dot)
 
-                if((numcheck_prev==False and dotcheck_prev==False) or
+                if(dotcheck_prev==False or
                     
                       dotcheck_side==False or
                         dotcheck_leftup==False or
@@ -147,16 +145,16 @@ for i in range(len(data)):
                                     
             elif(i==0 and st==0 and ed<len(data[i])):
                 print("inside i==0 st==0")
-                numcheck=np.char.isdigit(data[i+1][st])
+                
                 dotcheck=np.char.equal(data[i+1][st],dot)
                 
                 dotcheck_rightdown=np.char.equal(data[i+1][ed+1],dot)
                 dotcheckendside=np.char.equal(data[i][ed+1],dot)
 
-                numcheck1=np.char.isdigit(data[i+1][ed])
+                
                 dotcheck1=np.char.equal(data[i+1][ed],dot)
 
-                if((numcheck==False and dotcheck==False) or dotcheck_rightdown==False or dotcheckendside==False or dotcheck1==False):
+                if( dotcheck==False or dotcheck_rightdown==False or dotcheckendside==False or dotcheck1==False):
                     print("found a special character"+str(numbers[j]))
                     output.append(int(numbers[j]))
                     data[i]=data[i][:st]+('.'*len(numbers[j]))+data[i][(ed+1):]
@@ -169,7 +167,7 @@ for i in range(len(data)):
                     
             elif(i==(len(data)-1) and st==0 and ed<len(data[i])):
                 print("inside i==len(data) st==0")
-                numcheck_prev=np.char.isdigit(data[i-1][st])
+                
                 dotcheck_prev=np.char.equal(data[i-1][st],dot)
  
                 dotcheck_rightup=np.char.equal(data[i-1][ed+1],dot)
@@ -179,7 +177,7 @@ for i in range(len(data)):
                 dotcheckcentreup=np.char.equal(data[i-1][st+1],dot)
                 dotcheckendside=np.char.equal(data[i][ed+1],dot)
 
-                if((numcheck_prev==False and dotcheck_prev==False) or
+                if(dotcheck_prev==False or
                         
                           dotcheck_rightup==False or
                             
@@ -198,13 +196,11 @@ for i in range(len(data)):
             #condition for left col most inbetween row
             elif(0<i and i<(len(data)-1) and st==0 and ed<len(data[i])):
                 print("inside 0<i<len(data) st==0")
-                numcheck_prev=np.char.isdigit(data[i-1][st])
+                
                 dotcheck_prev=np.char.equal(data[i-1][st],dot)
-                numcheck_next=np.char.isdigit(data[i+1][st])
+                
                 dotcheck_next=np.char.equal(data[i+1][st],dot)
-                # dotcheck_side=np.char.equal(data[i][st-1],dot)
-                # dotcheck_leftup=np.char.equal(data[i-1][st-1],dot)
-                # dotcheck_leftdown=np.char.equal(data[i+1][st-1],dot)
+
                 dotcheck_rightup=np.char.equal(data[i-1][ed+1],dot)
                 dotcheck_rightdown=np.char.equal(data[i+1][ed+1],dot)
                 dotcheck1=np.char.equal(data[i+1][ed],dot)
@@ -212,8 +208,8 @@ for i in range(len(data)):
                 dotcheckcentreup=np.char.equal(data[i-1][st+1],dot)
                 dotcheckcentredown=np.char.equal(data[i+1][st+1],dot)
                 dotcheckendside=np.char.equal(data[i][ed+1],dot)
-                if((numcheck_prev==False and dotcheck_prev==False) or
-                    (numcheck_next==False and dotcheck_next==False) or
+                if(dotcheck_prev==False or
+                     dotcheck_next==False or
                       
                         
                           dotcheck_rightup==False or
@@ -233,19 +229,17 @@ for i in range(len(data)):
             #condition for right col most top row
             elif(i==0 and st>0 and ed==((len(data[i]))-1)):
                 print("inside i==0 ed==len(data)")
-                numcheck=np.char.isdigit(data[i+1][st])
+                
                 dotcheck=np.char.equal(data[i+1][st],dot)
                 dotcheck_side=np.char.equal(data[i][st-1],dot)
                 
                 dotcheck_leftdown=np.char.equal(data[i+1][st-1],dot)
             
-                # dotcheck_rightdown=np.char.equal(data[i+1][ed+1],dot)
-                # dotcheckendside=np.char.equal(data[i][ed+1],dot)
 
-                numcheck1=np.char.isdigit(data[i+1][ed])
+
                 dotcheck1=np.char.equal(data[i+1][ed],dot)
 
-                if((numcheck==False and dotcheck==False) or dotcheck_side==False or dotcheck_leftdown==False or dotcheck1==False):
+                if( dotcheck==False or dotcheck_side==False or dotcheck_leftdown==False or dotcheck1==False):
                     print("found a special character"+str(numbers[j]))
                     output.append(int(numbers[j]))
                     data[i]=data[i][:st]+('.'*len(numbers[j]))+data[i][(ed+1):]
@@ -257,20 +251,17 @@ for i in range(len(data)):
                     
             elif(i==((len(data))-1) and st>0 and ed==((len(data[i]))-1)):
                 print("inside i==len(data) ed==len(data)")
-                numcheck_prev=np.char.isdigit(data[i-1][st])
+                
                 dotcheck_prev=np.char.equal(data[i-1][st],dot)
 
                 dotcheck_side=np.char.equal(data[i][st-1],dot)
                 dotcheck_leftup=np.char.equal(data[i-1][st-1],dot)
  
-                # dotcheck_rightup=np.char.equal(data[i-1][ed+1],dot)
-    
-                # dotcheck1=np.char.equal(data[i+1][ed],dot)
                 dotcheck2=np.char.equal(data[i-1][ed],dot)
                 dotcheckcentreup=np.char.equal(data[i-1][st+1],dot)
-                # dotcheckendside=np.char.equal(data[i][ed+1],dot)
 
-                if((numcheck_prev==False and dotcheck_prev==False) or
+
+                if( dotcheck_prev==False or
                     
                       dotcheck_side==False or
                         dotcheck_leftup==False or
@@ -292,15 +283,14 @@ for i in range(len(data)):
             #condition for right col most inbetween row
             elif(0<i and i<(len(data)-1) and st>0 and ed==((len(data[i]))-1)):
                 print("inside 0<i<len(data) ed==len(data[i])")
-                numcheck_prev=np.char.isdigit(data[i-1][st])
+               
                 dotcheck_prev=np.char.equal(data[i-1][st],dot)
-                numcheck_next=np.char.isdigit(data[i+1][st])
+     
                 dotcheck_next=np.char.equal(data[i+1][st],dot)
                 dotcheck_side=np.char.equal(data[i][st-1],dot)
                 dotcheck_leftup=np.char.equal(data[i-1][st-1],dot)
                 dotcheck_leftdown=np.char.equal(data[i+1][st-1],dot)
-                # dotcheck_rightup=np.char.equal(data[i-1][ed+1],dot)
-                # dotcheck_rightdown=np.char.equal(data[i+1][ed+1],dot)
+
                 dotcheck1=np.char.equal(data[i+1][ed],dot)
                 dotcheck2=np.char.equal(data[i-1][ed],dot)
                 if(st==ed):
@@ -309,8 +299,8 @@ for i in range(len(data)):
                   dotcheckcentreup=np.char.equal(data[i-1][st+1],dot)
                   dotcheckcentredown=np.char.equal(data[i+1][st+1],dot)
                 # dotcheckendside=np.char.equal(data[i][ed+1],dot)
-                if((numcheck_prev==False and dotcheck_prev==False) or
-                    (numcheck_next==False and dotcheck_next==False) or
+                if(dotcheck_prev==False or
+                     dotcheck_next==False or
                       dotcheck_side==False or dotcheck_leftup==False or
                         dotcheck_leftdown==False or
 
