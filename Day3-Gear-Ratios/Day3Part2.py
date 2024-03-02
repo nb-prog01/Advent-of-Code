@@ -26,6 +26,26 @@ SW=[row+1][col-1]
 SE=[row+1][col+1]
 
 '''
+
+def starAttachedNumbers(lenOfNum, start, end):
+    dictOfIndices={
+        left:
+        left_diagonal:
+        left_neg_diagonal:
+        right:
+        right_diagonal:
+        right_neg_diagonal:
+    }
+    for i in range len(lenOfNum):
+        key1= 'centre_up '+ str(i)
+        key2= 'centre_down '+str(i)
+        dictOfIndicea[key1]={}
+        dictOfIndices[key2]={}
+    
+
+
+
+
 data=np.loadtxt ('Gear.txt',dtype='object',comments=None)
 data=np.array(data)
 temp_data=[]
