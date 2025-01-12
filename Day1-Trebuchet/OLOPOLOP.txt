@@ -1,0 +1,16 @@
+Automating Commercial Banking Payments Flow
+Employed tools and technologies such as Cucumber BDD Framework,
+Selenium WebDriver, Serenity for reports, Gherkin, and MongoDB.
+Coordinating the integration of automated payment flows into the CI/CD pipeline
+using Jenkins, ensuring continuous testing and deployment efficiency.
+
+job requisition id
+R1522742
+R1524250
+R1529750
+
+Automating Commercial Banking Payments Flow and APIs.
+Employed tools and technologies such as Cucumber BDD Framework,
+Selenium WebDriver, Serenity for reports, Gherkin, and MongoDB. Postman and Karate framework for API testing
+Coordinating the integration of automated payment flows into the CI/CD pipeline
+using Jenkins, ensuring continuous testing and deployment efficiency.
