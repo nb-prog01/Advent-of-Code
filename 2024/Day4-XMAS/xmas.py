@@ -31,32 +31,32 @@ for i in range(len(data_array)):
 
 horizontal=np.rot90(np.fliplr(vertical))
 
-for i in range(len(horizontal)):
-      x_str=''.join(str(a) for a in horizontal[i])
-      # print(x_str)
-      pattern=r"XMAS|SAMX"
-      matches=re.findall(pattern,x_str,overlapped=True)
-      # print(matches)
-      HCOUNT+=len(matches)
+# for i in range(len(horizontal)):
+#       x_str=''.join(str(a) for a in horizontal[i])
+#       # print(x_str)
+#       pattern=r"XMAS|SAMX"
+#       matches=re.findall(pattern,x_str,overlapped=True)
+#       # print(matches)
+#       HCOUNT+=len(matches)
 
-print("Horizontal count:",HCOUNT)
+# print("Horizontal count:",HCOUNT)
 
-for i in range(len(vertical)):
-      x_str=''.join(str(a) for a in vertical[i])
-      # print(x_str)
-      pattern=r"XMAS|SAMX"
-      matches=re.findall(pattern,x_str,overlapped=True)
-      # print(matches)
-      VCOUNT+=len(matches)
+# for i in range(len(vertical)):
+#       x_str=''.join(str(a) for a in vertical[i])
+#       # print(x_str)
+#       pattern=r"XMAS|SAMX"
+#       matches=re.findall(pattern,x_str,overlapped=True)
+#       # print(matches)
+#       VCOUNT+=len(matches)
 
-print("Vertical count:",VCOUNT)
+# print("Vertical count:",VCOUNT)
 
 #left to right diagonal
 for i in range(-np_array.shape[0]+1,np_array.shape[0]):
       olo=np_array.diagonal(offset=i)
       x_str=''.join(str(a) for a in olo)
       # print(x_str)
-      pattern=r"XMAS|SAMX"
+      pattern=r"MAS|SAM"
       matches=re.findall(pattern,x_str,overlapped=True)
       # print(matches)
       LDCOUNT+=len(matches)
@@ -71,7 +71,7 @@ for i in range(-horizontal.shape[0]+1,horizontal.shape[0]):
       polo=diagonalmat.diagonal(offset=i)
       x_str=''.join(str(a) for a in polo)
       # print(x_str)
-      pattern=r"XMAS|SAMX"
+      pattern=r"MAS|SAM"
       matches=re.findall(pattern,x_str,overlapped=True)
       # print(matches)
       RDCOUNT+=len(matches)
